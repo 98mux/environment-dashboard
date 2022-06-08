@@ -1,7 +1,7 @@
 <script>
 	import Grid from 'svelte-grid';
 	import gridHelp from 'svelte-grid/build/helper/index.mjs';
-	import components from '$lib/components/index.js';
+	import widgets from '$lib/widgets/index';
 
 	const { item } = gridHelp;
 	const id = () => '_' + Math.random().toString(36).substr(2, 9);
@@ -58,18 +58,10 @@
 	];
 </script>
 
-<div class="demo-container size">
-	<Grid bind:items rowHeight={140} let:item {cols} let:index let:dataItem>
-		{#if components[dataItem.data?.type]}
-			{#await components[dataItem.data?.type]() then component}
-				<svelte:component this={component.default} {...dataItem.data} />
-			{/await}
-		{/if}
-	</Grid>
-</div>
-
-<!--<div
-			class="demo-widget content card bg-blue-200 w-full h-full flex justify-center items-center"
-		>
-			<h3>{index} {JSON.stringify(item)}</h3>
-		</div>-->
+<Grid bind:items rowHeight={140} let:item {cols} let:index let:dataItem>
+	{#if widgets[dataItem.data?.type]}
+		{#await widgets[dataItem.data?.type]() then component}
+			<svelte:component this={component.default} {...dataItem.data} />
+		{/await}
+	{/if}
+</Grid>
