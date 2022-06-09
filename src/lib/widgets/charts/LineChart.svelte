@@ -32,5 +32,9 @@
 			<Line />
 			<Area />
 		</Svg>
+		<Html>
+			<Labels />
+			<SharedTooltip formatTitle={formatTickX} dataset={data} />
+		</Html>
 	</LayerCake>
 </div>
