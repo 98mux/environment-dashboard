@@ -1,4 +1,4 @@
-<div class="card w-full h-full bg-base-100 shadow-xl">
+<div class="card w-full h-full bg-base-100 shadow">
 	<figure><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
 	<div class="card-body">
 		<h2 class="card-title">Shoes!</h2>

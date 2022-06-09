@@ -10,12 +10,12 @@
 	});
 </script>
 
-<div class="flex gap-2 flex-col md:flex-row">
-	<div class="md:w-72 w-full md:h-screen" style="background-color:rgb(60,62,62);">
-		<img class="p-8 mx-auto md:w-60 w-48" src="https://www.baerum.kommune.no/UI/logo-light.png" />
+<div class="flex gap-2 flex-col lg:flex-row">
+	<div class="lg:w-72 w-full lg:h-screen" style="background-color:rgb(60,62,62);">
+		<img class="p-8 mx-auto lg:w-60 w-48" src="https://www.baerum.kommune.no/UI/logo-light.png" />
 		<div class="w-full p-4">
 			<select data-choose-theme class="select w-full">
-				<option value="light">light</option>
+				<option value="light">Light</option>
 				<option value="dark">Dark</option>
 				<option value="garden">garden</option>
 				<option value="luxury">Luxury</option>
@@ -23,7 +23,9 @@
 			</select>
 		</div>
 	</div>
-	<slot />
+	<div class="h-screen overflow-y-scroll w-full">
+		<slot />
+	</div>
 </div>
 
 <svelte:head>

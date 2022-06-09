@@ -1,7 +1,11 @@
 <script>
 	export let text = '';
+
+	let _class = '';
+
+	export { _class as class };
 </script>
 
-<span class="md:text-5xl text-3xl font-extrabold">
+<div class=" {_class}">
 	{text}
-</span>
+</div>

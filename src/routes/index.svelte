@@ -6,101 +6,99 @@
 	const { item } = gridHelp;
 	const id = () => '_' + Math.random().toString(36).substr(2, 9);
 
+	import layout from '$lib/layout.js';
+
+	//$: console.log(items);
+
 	let items = [
+		...layout,
 		{
 			id: id(),
-			5: item({
-				x: 0,
-				y: 0,
-				w: 2,
-				h: 2
-			}),
-			3: item({ x: 0, w: 2, h: 2, y: 0 }),
-			1: item({ x: 0, y: 0, w: 1, h: 2 }),
-			data: { type: 'stats2' }
-		},
-		{
-			id: id(),
-			5: item({
-				x: 2,
-				y: 0,
-				w: 3,
-				h: 2
-			}),
-			3: item({ x: 2, w: 1, h: 2, y: 0 }),
-			1: item({ x: 0, y: 2, w: 1, h: 2 }),
-			data: { type: 'card' }
-		},
-
-		{
-			id: id(),
-			5: item({
-				x: 0,
-				y: 2,
-				w: 5,
-				h: 2
-			}),
-			3: item({ x: 0, w: 3, h: 2, y: 2 }),
-			1: item({ x: 0, y: 4, w: 1, h: 2 }),
+			12: item({ x: 0, y: 3, w: 6, h: 2 }),
 			data: {
-				type: 'stats',
-				title: 'Total Page Views',
-				value: '89,400',
-				description: '21% more than last month'
-			}
-		},
-		{
-			id: id(),
-			1: item({ x: 0, y: 4, w: 1, h: 2 }),
-			data: {
-				type: 'stats',
-				title: 'Temperatur',
-				value: '23.0°C',
-				description: ''
-			}
-		},
-		{
-			id: id(),
-			1: item({ x: 0, y: 4, w: 1, h: 2 }),
-			data: {
-				type: 'stats',
-				title: 'Vind',
-				value: '2.70 m/s',
-				description: ''
-			}
-		},
-
-		{
-			id: id(),
-			1: item({ x: 0, y: 4, w: 1, h: 2 }),
-			data: {
-				type: 'stats',
-				title: 'Nedbør',
-				value: '0.00 mm',
-				description: ''
-			}
-		},
-		{
-			id: id(),
-			1: item({ x: 0, y: 4, w: 1, h: 2 }),
-			data: {
-				type: 'text',
-				text: 'Bærum kommune i dag'
+				type: 'lineChart'
 			}
 		}
+		/*
+		{
+			id: id(),
+			12: item({ x: 0, y: 1, w: 3, h: 2 }),
+			data: {
+				type: 'statsAndIcon',
+				title: 'NO2',
+				value: '19.57 ug/m³',
+				icon: 'fa-smile text-success'
+			}
+		},
+		{
+			id: id(),
+			12: item({ x: 2, y: 1, w: 3, h: 2 }),
+			data: {
+				type: 'statsAndIcon',
+				title: 'PM2,5',
+				value: '8.50 ug/m³',
+				icon: 'fa-smile text-success'
+			}
+		},
+		{
+			id: id(),
+			12: item({ x: 4, y: 1, w: 3, h: 2 }),
+			data: {
+				type: 'statsAndIcon',
+				title: 'PM10',
+				value: '19.20 ug/m³',
+				icon: 'fa-smile text-success'
+			}
+		},
+		{
+			id: id(),
+			12: item({ x: 4, y: 1, w: 3, h: 2 }),
+			data: {
+				type: 'text',
+				text: 'Luftkvalitet og helserisiko denne timen',
+				class: 'font-bold text-4xl text-center w-full h-full my-auto'
+			}
+		},
+		{
+			id: id(),
+			12: item({ x: 4, y: 1, w: 3, h: 2 }),
+			data: {
+				type: 'statsAndIcon',
+				title: 'Sykkelpasseringer',
+				value: '219',
+				icon: 'fa-person-biking text-success'
+			}
+		},
+		{
+			id: id(),
+			12: item({ x: 4, y: 1, w: 3, h: 2 }),
+			data: {
+				type: 'statsAndIcon',
+				title: 'Bilpasseringer',
+				value: '27 806',
+				icon: 'fa-car text-success'
+			}
+		}*/
 	];
 
 	const cols = [
 		[1500, 12],
-		[1024, 3],
-		[500, 1]
+		/*[1024, 3],*/
+		/*[500, 1]*/
+		[1024, 1]
 	];
 </script>
 
 <Grid bind:items rowHeight={140} let:item {cols} let:index let:dataItem>
-	{#if widgets[dataItem.data?.type]}
-		{#await widgets[dataItem.data?.type]() then component}
-			<svelte:component this={component.default} {...dataItem.data} />
-		{/await}
-	{/if}
+	<span
+		on:click={() => {
+			console.log(dataItem);
+		}}
+	>
+		{#if widgets[dataItem.data?.type]}
+			{#await widgets[dataItem.data?.type]() then component}
+				<svelte:component this={component.default} {...dataItem.data} />
+			{/await}
+		{/if}
+	</span>
 </Grid>
