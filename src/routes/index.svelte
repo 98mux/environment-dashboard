@@ -48,11 +48,50 @@
 				value: '89,400',
 				description: '21% more than last month'
 			}
+		},
+		{
+			id: id(),
+			1: item({ x: 0, y: 4, w: 1, h: 2 }),
+			data: {
+				type: 'stats',
+				title: 'Temperatur',
+				value: '23.0°C',
+				description: ''
+			}
+		},
+		{
+			id: id(),
+			1: item({ x: 0, y: 4, w: 1, h: 2 }),
+			data: {
+				type: 'stats',
+				title: 'Vind',
+				value: '2.70 m/s',
+				description: ''
+			}
+		},
+
+		{
+			id: id(),
+			1: item({ x: 0, y: 4, w: 1, h: 2 }),
+			data: {
+				type: 'stats',
+				title: 'Nedbør',
+				value: '0.00 mm',
+				description: ''
+			}
+		},
+		{
+			id: id(),
+			1: item({ x: 0, y: 4, w: 1, h: 2 }),
+			data: {
+				type: 'text',
+				text: 'Bærum kommune i dag'
+			}
 		}
 	];
 
 	const cols = [
-		[1500, 5],
+		[1500, 12],
 		[1024, 3],
 		[500, 1]
 	];
