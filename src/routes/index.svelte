@@ -1,6 +1,7 @@
 <script>
 	import AirQuality from '$lib/widgets/AirQuality.svelte';
 	import LineChart from '$lib/widgets/charts/LineChart.svelte';
+	import TrafficAirQualityChart from '$lib/widgets/charts/TrafficAirQualityChart.svelte';
 	import CurrentWeather from '$lib/widgets/CurrentWeather.svelte';
 	import Traffic from '$lib/widgets/Traffic.svelte';
 </script>
@@ -23,5 +24,8 @@
 	</div>
 	<div class="lg:col-span-6 h-60">
 		<LineChart />
+	</div>
+	<div class="lg:col-span-2">
+		<TrafficAirQualityChart />
 	</div>
 </div>
