@@ -10,11 +10,14 @@
 	});
 </script>
 
-<div class="flex gap-2 flex-col lg:flex-row">
-	<div class="lg:w-72 w-full lg:h-screen" style="background-color:rgb(60,62,62);">
-		<img class="p-8 mx-auto lg:w-60 w-48" src="https://www.baerum.kommune.no/UI/logo-light.png" />
+<div class="flex gap-2 flex-col lg:flex-row h-screen">
+	<div class="lg:w-72 w-full " style="background-color:rgb(60,62,62);">
+		<img
+			class=" p-4 lg:p-8 mx-auto lg:w-60 w-48"
+			src="https://www.baerum.kommune.no/UI/logo-light.png"
+		/>
 		<div class="w-full p-4">
-			<select data-choose-theme class="select w-full">
+			<select data-choose-theme class="select lg:select-md select-sm w-full">
 				<option value="light">Light</option>
 				<option value="dark">Dark</option>
 				<option value="garden">garden</option>
