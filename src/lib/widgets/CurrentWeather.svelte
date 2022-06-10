@@ -1,11 +1,12 @@
 <script>
     import Stats from '$lib/widgets/Stats.svelte';
     import { onMount } from 'svelte';
+import WindWidget from './WindWidget.svelte';
 
     // Coordinates in the middle of Fornebu
     const lat = 59.897158;
     const lon = 10.615183;
-    const alt = 15
+    const alt = 5;
     const url = `https://api.met.no/weatherapi/nowcast/2.0/complete?altitude=${alt}&lat=${lat}&lon=${lon}`;
 
     let temp = 0;
@@ -21,13 +22,13 @@
 
     onMount(async () => {
         let data = await getWeather();
-        console.log(data);
     
         temp = data.properties.timeseries[0].data.instant.details.air_temperature;
-        wind_speed = data.properties.timeseries[0].data.instant.details.wind_speed;
-        wind_dir = data.properties.timeseries[0].data.instant.details.wind_from_direction;
+        wind_speed = Math.round(data.properties.timeseries[0].data.instant.details.wind_speed);
+        wind_dir = parseInt(data.properties.timeseries[0].data.instant.details.wind_from_direction);
         percipitation = data.properties.timeseries[0].data.instant.details.precipitation_rate;
-        console.log("Wind_dir: " + wind_dir);
+        let last_update = data.properties.timeseries[0].time;
+        console.log("Last weather update: " + last_update);
     });
 
 </script>
@@ -36,7 +37,7 @@
     <Stats title="Temperatur" value="{temp} °C" description="" />
 </div>
 <div class="lg:col-span-2">
-    <Stats title="Vind" value="{wind_speed} m/s" description="" />
+    <WindWidget wind_speed="{wind_speed}" wind_dir="{wind_dir}" />
 </div>
 <div class="lg:col-span-2">
     <Stats title="Nedbør" value="{percipitation} mm" description="" />
