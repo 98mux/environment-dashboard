@@ -21,7 +21,7 @@
 	<option value={snarøyveien}>Snarøyveien (Fornebu)</option>
 	<!--<option value={lysaker}>Lysaker</option>-->
 </select>
-<div class="flex gap-2">
+<div class="flex gap-4">
 	<StatsAndIcon title="Bilpasseringer" value={carVolume} icon="fa-car text-success" />
 	<StatsAndIcon
 		title="Sykkelpasseringer"
