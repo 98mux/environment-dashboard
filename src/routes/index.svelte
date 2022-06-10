@@ -1,9 +1,9 @@
 <script>
 	import StatsAndIcon from '$lib/widgets/StatsAndIcon.svelte';
-	import Stats from '$lib/widgets/Stats.svelte';
 	import AirQuality from '$lib/widgets/AirQuality.svelte';
 	import getAirQuality from '$lib/api/air_quality.js';
 	import LineChart from '$lib/widgets/charts/LineChart.svelte';
+	import CurrentWeather from '$lib/widgets/CurrentWeather.svelte';
 
 	let station = 'E18+Høvik+kirke';
 	let airQuality = { PM10: '0', NO2: '0', 'PM2.5': '0' };
@@ -17,14 +17,9 @@
 	<div class="lg:col-span-6">
 		<div class="font-extrabold md:text-5xl text-3xl text-center">Bærum kommune i dag</div>
 	</div>
-	<div class="lg:col-span-2">
-		<Stats title="Temperatur" value="23.0°C" description="" />
-	</div>
-	<div class="lg:col-span-2">
-		<Stats title="Vind" value="2.70 m/s" description="" />
-	</div>
-	<div class="lg:col-span-2">
-		<Stats title="Nedbør" value="0.00 mm" description="" />
+	
+	<div class="lg:col-span-6">
+		<CurrentWeather />
 	</div>
 
 	<div class="lg:col-span-6" />
