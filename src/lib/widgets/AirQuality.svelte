@@ -94,7 +94,6 @@
 		<option value="Bekkestua">Bekkestua</option>
 	</select>
 </div>
-<div class="font-bold text-2xl text-center">Luftkvalitet og helserisiko denne timen</div>
 <div class="grid lg:grid-cols-3 w-full gap-2">
 	<div class="lg:col-span-1">
 		<StatsAndIcon title={'NO2 (ug/m³)'} value={airQuality.NO2} icon={getIcon('NO2')} />
