@@ -1,6 +1,4 @@
-import { gql } from "@apollo/client/core";
-
-export const TRAFFIC=gql`
+export const TRAFFIC=`
 {
 	trafficData(trafficRegistrationPointId: "44656V72812") {
 	  volume {

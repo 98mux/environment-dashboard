@@ -1,5 +1,5 @@
 
-export async function trafficQuery(query:string, variables:string){
+export async function trafficQuery(query:string, variables:any){
 	return graphql(query,variables, "https://www.vegvesen.no/trafikkdata/api/")
 }
 
