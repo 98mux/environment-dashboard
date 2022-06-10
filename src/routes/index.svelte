@@ -4,6 +4,7 @@
 	import getAirQuality from '$lib/api/air_quality.js';
 	import LineChart from '$lib/widgets/charts/LineChart.svelte';
 	import CurrentWeather from '$lib/widgets/CurrentWeather.svelte';
+	import Traffic from '$lib/widgets/Traffic.svelte';
 
 	let station = 'E18+Høvik+kirke';
 	let airQuality = { PM10: '0', NO2: '0', 'PM2.5': '0' };
@@ -28,12 +29,8 @@
 		<div class="font-bold text-3xl text-center">Luftkvalitet og helserisiko denne timen</div>
 	</div>
 
-	<div class="lg:col-span-3">
-		<StatsAndIcon title="Bilpasseringer" value="27 806" icon="fa-car text-success" />
-	</div>
-
-	<div class="lg:col-span-3">
-		<StatsAndIcon title="Sykkelpasseringer" value="219" icon="fa-person-biking text-success" />
+	<div class="lg:col-span-6">
+		<Traffic />
 	</div>
 
 	<div class="lg:col-span-4">
