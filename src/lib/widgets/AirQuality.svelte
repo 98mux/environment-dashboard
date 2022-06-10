@@ -1,11 +1,11 @@
 <script>
 	import StatsAndIcon from './StatsAndIcon.svelte';
-	import getAirQuality from '$lib/api/air_quality.js';
+	import getCurrentAirQuality from '$lib/api/air_quality.js';
 
 	let station = 'E18+Høvik+kirke';
 	let airQuality = { PM10: '0', NO2: '0', 'PM2.5': '0' };
 
-	$: getAirQuality(station).then((data) => {
+	$: getCurrentAirQuality(station).then((data) => {
 		airQuality = data;
 	});
 
