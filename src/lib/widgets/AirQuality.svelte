@@ -94,7 +94,7 @@
 		<option value="Bekkestua">Bekkestua</option>
 	</select>
 </div>
-<div class="grid lg:grid-cols-3 w-full gap-2">
+<div class="grid lg:grid-cols-3 w-full gap-4">
 	<div class="lg:col-span-1">
 		<StatsAndIcon title={'NO2 (ug/m³)'} value={airQuality.NO2} icon={getIcon('NO2')} />
 	</div>

@@ -5,7 +5,7 @@
 	import Traffic from '$lib/widgets/Traffic.svelte';
 </script>
 
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-2 p-4 items-center">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 items-center">
 	<div class="lg:col-span-6">
 		<div class="font-extrabold md:text-5xl text-3xl text-center">Fornebu i dag</div>
 	</div>

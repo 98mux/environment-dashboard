@@ -31,7 +31,7 @@
 	});
 </script>
 
-<div class="grid lg:grid-cols-3 gap-2">
+<div class="grid lg:grid-cols-3 gap-4">
 	<div class="lg:col-span-1">
 		<Stats title="Temperatur" value="{temp} °C" description="" />
 	</div>
