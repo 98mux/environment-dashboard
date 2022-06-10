@@ -1,6 +1,7 @@
 <script>
 	import StatsAndIcon from '$lib/widgets/StatsAndIcon.svelte';
 	import Stats from '$lib/widgets/Stats.svelte';
+	import AirQuality from '$lib/widgets/AirQuality.svelte';
 	import getAirQuality from '$lib/api/air_quality.js';
 	import LineChart from '$lib/widgets/charts/LineChart.svelte';
 
@@ -48,15 +49,15 @@
 		</select>
 	</div>
 	<div class="lg:col-span-2">
-		<StatsAndIcon title="NO2 (ug/m³)" value={airQuality?.NO2} icon="fa-smile text-success" />
+		<AirQuality title="NO2 (ug/m³)" measurementValue="{airQuality?.NO2}" component='NO2' />
 	</div>
 
 	<div class="lg:col-span-2">
-		<StatsAndIcon title="PM2,5 (ug/m³)" value={airQuality['PM2.5']} icon="fa-smile text-success" />
+		<AirQuality title="PM2,5 (ug/m³)" measurementValue="{airQuality['PM2.5']}" component='PM25' />
 	</div>
 
 	<div class="lg:col-span-2">
-		<StatsAndIcon title="PM10 (ug/m³)" value={airQuality?.PM10} icon="fa-smile text-success" />
+		<AirQuality title="PM10 (ug/m³)" measurementValue="{airQuality?.PM10}" component='PM10' />
 	</div>
 	<div class="lg:col-span-6 h-60">
 		<LineChart />
