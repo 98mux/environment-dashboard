@@ -1,5 +1,6 @@
 <script>
 	import { getAirQualityInterval } from '$lib/api/air_quality';
+	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
 	import LineChart from './LineChart.svelte';
 
@@ -12,7 +13,7 @@
 
 	onMount(async () => {
 		let aqData = await getAirQualityInterval(aqStation, startTime, endTime);
-		labels = aqData.NO2.map((d) => d.toTime);
+		labels = aqData.NO2.map((d) => dayjs(d.toTime).format('ddd HH:mm'));
 
 		let NO2Values = aqData.NO2.map((d) => d.value);
 		let PM25Values = aqData['PM2.5'].map((d) => d.value);
@@ -20,15 +21,15 @@
 
 		datasets = [
 			{
-				// label: "NO2",
+				name: 'NO2',
 				values: NO2Values
 			},
 			{
-				// label: "PM2.5",
+				name: 'PM2.5',
 				values: PM25Values
 			},
 			{
-				// label: "PM10",
+				name: 'PM10',
 				values: PM10Values
 			}
 		];

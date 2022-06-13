@@ -9,9 +9,15 @@
 		datasets
 	};
 
+	let chart = undefined;
 	$: console.log('line', data);
+	/*	$: {
+		if (chart) {
+			chart.update(data);
+		}
+	}*/
 </script>
 
 <div class=" w-full h-full card shadow p-2">
-	<Chart {data} type="line" />
+	<Chart bind:this={chart} {data} type="line" />
 </div>
