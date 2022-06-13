@@ -14,7 +14,7 @@
 	<Chart
 		{data}
 		lineOptions={{ regionFill: 1, hideDots: 1, spline: 1 }}
-		axisOptions={{ xIsSeries: true }}
+		axisOptions={{ xIsSeries: true, xAxisMode: 'tick' }}
 		type="line"
 	/>
 </div>
