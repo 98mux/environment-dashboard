@@ -12,11 +12,15 @@ const getCurrentAirQuality = async (station) => {
 export const getAirQualityInterval = async (station, start, end) =>{
     // start and stop on format: yyyy-mm-dd
     // Station E18 Høvik kirke has to be entered as E18%20Høvik%20kirke
-	const url = `${baseUrl}/aq/historical/${start}/${end}/${station}`
+	const url = `${baseUrl}/historical/${start}/${end}/${station}`
     const response = await fetch(url);
 	let data = await response.json();
-    console.log("FINISH FETCH")
     data = Object.fromEntries(data.map(({component, values}) => ([component, values])));
+
+    // Strip down the measurements to only contain the time and values
+    for (let key in data) {
+        data[key] = data[key].map(({toTime, value}) => ({toTime, value}));
+    }
 
     console.log("DATA: ", data);
 	return data;
