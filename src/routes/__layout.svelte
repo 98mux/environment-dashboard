@@ -10,7 +10,7 @@
 	});
 </script>
 
-<div class="flex gap-2 flex-col lg:flex-row h-screen">
+<div class="flex gap-2 flex-col lg:flex-row min-h-screen ">
 	<div class="lg:w-72 w-full " style="background-color:rgb(60,62,62);">
 		<img
 			class=" p-4 lg:p-8 mx-auto lg:w-60 w-48"
@@ -26,7 +26,7 @@
 			</select>
 		</div>
 	</div>
-	<div class="h-screen overflow-y-scroll w-full">
+	<div class="overflow-y-scroll w-full">
 		<slot />
 	</div>
 </div>
