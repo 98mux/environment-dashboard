@@ -22,8 +22,7 @@ export const getAirQualityInterval = async (station, start, end) =>{
         data[key] = data[key].map(({toTime, value}) => ({toTime, value}));
     }
 
-    console.log("DATA: ", data);
-	return data;
+    return data;
 }
 
 

@@ -22,10 +22,14 @@
 	<div class="lg:col-span-6">
 		<AirQuality />
 	</div>
-	<div class="lg:col-span-6 h-60">
-		<LineChart />
-	</div>
-	<div class="lg:col-span-2">
-		<TrafficAirQualityChart />
+	<!-- <div class="lg:col-span-6 h-60">
+		<LineChart station="E18%20Høvik%20kirke" startTime="2022-06-01" endTime="2022-06-09" />
+	</div> -->
+	<div class="lg:col-span-6">
+		<TrafficAirQualityChart
+			aqStation="E18%20Høvik%20kirke"
+			startTime="2022-06-07"
+			endTime="2022-06-09"
+		/>
 	</div>
 </div>
