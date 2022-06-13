@@ -1,14 +1,15 @@
 <script>
 	import Chart from 'svelte-frappe-charts';
 
+	export let labels = [1,2];
+	export let dataset = [{values: [1, 2]}];
+
 	let data = {
-		labels: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'],
-		datasets: [
-			{
-				values: [10, 12, 3, 9, 8, 15, 9]
-			}
-		]
-	};
+		labels: labels,
+		dataset: dataset,
+	}
+
+	$: console.log("line", data);
 </script>
 
 <div class=" w-full h-full card shadow p-2">
