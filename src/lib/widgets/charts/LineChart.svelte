@@ -19,5 +19,11 @@
 </script>
 
 <div class=" w-full h-full card shadow p-2">
-	<Chart bind:this={chart} {data} type="line" />
+	<Chart
+		bind:this={chart}
+		{data}
+		lineOptions={{ regionFill: 1, hideDots: 1, spline: 1 }}
+		axisOptions={{ xIsSeries: true }}
+		type="line"
+	/>
 </div>
