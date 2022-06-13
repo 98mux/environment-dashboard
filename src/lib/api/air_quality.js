@@ -14,7 +14,7 @@ export const getAirQualityInterval = async (station, start, end) =>{
     // Station E18 Høvik kirke has to be entered as E18%20Høvik%20kirke
 	const url = `${baseUrl}/aq/historical/${start}/${end}/${station}`
     const response = await fetch(url);
-	const data = await response.json();
+	let data = await response.json();
     console.log("FINISH FETCH")
     data = Object.fromEntries(data.map(({component, values}) => ([component, values])));
 

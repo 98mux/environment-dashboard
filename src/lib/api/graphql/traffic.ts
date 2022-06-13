@@ -4,10 +4,16 @@ import dayjs from "dayjs";
 
 const sum = (accumulator:number, curr:number) => accumulator + curr;
 
-export const volumeAtDate = (trafficRegistrationPointId:string, date:any) => trafficData(trafficRegistrationPointId, date)
+export const volumeAtDate = (trafficRegistrationPointId:string, date:any) =>
+trafficData(trafficRegistrationPointId, dayjs(date).subtract(dayjs(date).get('hours'),'hour').format(),date)
 .then((data) => data.trafficData.volume.byHour.edges.map((edge) => edge.node.total.volumeNumbers.volume).reduce(sum));
 
-export const trafficData = (trafficRegistrationPointId:string, hour:any) => trafficQuery(`
+
+export const trafficDataTimeAndValueBetweenDates = (trafficRegistrationPointId:string, fromDate:string, toDate:string) =>
+trafficData(trafficRegistrationPointId, fromDate, toDate)
+.then((data) => data.trafficData.volume.byHour.edges.map((edge) => ({date:edge.node.to, value:edge.node.total.volumeNumbers.volume})));
+
+export const trafficData = (trafficRegistrationPointId:string, from:string, to:string) => trafficQuery(`
 	query trafficData($trafficRegistrationPointId: String!, $from:ZonedDateTime!, $to:ZonedDateTime!) {
 	trafficData(trafficRegistrationPointId: $trafficRegistrationPointId) {
 	  volume {
@@ -33,4 +39,4 @@ export const trafficData = (trafficRegistrationPointId:string, hour:any) => traf
 	  }
 	}
       }
-      `,{trafficRegistrationPointId, from:dayjs(hour).subtract(dayjs(hour).get('hours'),'hour').format(), to:hour});
+      `,{trafficRegistrationPointId, from, to});

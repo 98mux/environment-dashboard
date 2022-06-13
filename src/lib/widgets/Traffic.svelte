@@ -1,7 +1,8 @@
 <script>
-	import { volumeAtDate } from '$lib/api/graphql/traffic';
+	import { trafficDataTimeAndValueBetweenDates, volumeAtDate } from '$lib/api/graphql/traffic';
 	import dayjs from 'dayjs';
 	import StatsAndIcon from '$lib/widgets/StatsAndIcon.svelte';
+	import { onMount } from 'svelte';
 
 	const snarøyveien = { car: '17096V443647', bike: '88224B442844' };
 	const lysaker = { car: '04925V444232', bike: '55912B613537' };
@@ -14,6 +15,16 @@
 		volumeAtDate(road.car, dayjs().format()).then((volume) => (carVolume = volume));
 		volumeAtDate(road.bike, dayjs().format()).then((volume) => (bicycleVolume = volume));
 	}
+
+	onMount(async () => {
+		console.log(
+			await trafficDataTimeAndValueBetweenDates(
+				'17096V443647',
+				dayjs().subtract(5, 'day').format(),
+				dayjs().format()
+			)
+		);
+	});
 </script>
 
 <select class="select w-full  m-2 mx-auto text-center" bind:value={road}>
