@@ -15,16 +15,6 @@
 		volumeAtDate(road.car, dayjs().format()).then((volume) => (carVolume = volume));
 		volumeAtDate(road.bike, dayjs().format()).then((volume) => (bicycleVolume = volume));
 	}
-
-	onMount(async () => {
-		console.log(
-			await trafficDataTimeAndValueBetweenDates(
-				'17096V443647',
-				dayjs().subtract(5, 'day').format(),
-				dayjs().format()
-			)
-		);
-	});
 </script>
 
 <select class="select w-full  m-2 mx-auto text-center" bind:value={road}>
