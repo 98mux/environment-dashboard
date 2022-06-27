@@ -2,7 +2,7 @@ import {trafficQuery} from "./graphQL";
 import dayjs from "dayjs";
 
 
-const sum = (accumulator:number, curr:number) => accumulator + curr;
+export const sum = (accumulator:number, curr:number) => accumulator + curr;
 
 export const volumeAtDate = (trafficRegistrationPointId:string, date:any):Promise<number> =>
 trafficData(trafficRegistrationPointId, dayjs(date).subtract(dayjs(date).get('hours'),'hour').format(),date)

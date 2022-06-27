@@ -1,9 +1,11 @@
 <script>
+	import AudioMixer from './../lib/widgets/AudioMixer.svelte';
 	import AirQuality from '$lib/widgets/AirQuality.svelte';
 	import LineChart from '$lib/widgets/charts/LineChart.svelte';
 	import TrafficAirQualityChart from '$lib/widgets/charts/TrafficAirQualityChart.svelte';
 	import CurrentWeather from '$lib/widgets/CurrentWeather.svelte';
 	import Traffic from '$lib/widgets/Traffic.svelte';
+	import SoundPerHour from '$lib/widgets/SoundPerHour.svelte';
 </script>
 
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 items-center">
@@ -31,5 +33,13 @@
 			startTime="2022-06-07"
 			endTime="2022-06-09"
 		/>
+	</div>
+	<div class="lg:col-span-2">
+		<AudioMixer />
+	</div>
+
+	<div class="lg:col-span-3" />
+	<div class="lg:col-span-2">
+		<SoundPerHour />
 	</div>
 </div>
