@@ -1,3 +1,14 @@
+<script context="module" lang="ts">
+	export type OptionsType =
+		| Partial<{
+				circleColor: string;
+				lineColor: string;
+				lineLength: number;
+				duration: number;
+		  }>
+		| undefined;
+</script>
+
 <script lang="ts">
 	import { Layer } from 'svelte-canvas';
 	import { spring, tweened } from 'svelte/motion';
@@ -5,6 +16,14 @@
 	import { Writable, get } from 'svelte/store';
 
 	export let positions: Array<{ x: number; y: number; r: number }> = [];
+	export let options:
+		| Partial<{
+				circleColor: string;
+				lineColor: string;
+				lineLength: number;
+				duration: number;
+		  }>
+		| undefined;
 	export let fps = 60;
 	export let type: 'car' | 'bicycle' | 'bus';
 
@@ -24,35 +43,22 @@
 				const x2 = tweeneded[i].x;
 				const y2 = tweeneded[i].y;
 
-				x2.set(x);
-				y2.set(y);
+				x2.set(x, { duration });
+				y2.set(y, { duration });
 			}
 		}
 		tweeneded = tweeneded;
 	}
-	/*
-	const radius = spring(r, { stiffness: 0.15, damping: 0.3 });
-	$: radius.set(r);*/
-	let duration = 14000;
 
-	let color = '#64B369';
-	if (type === 'car') {
-		color = '#F3E6DE';
-	} else if (type === 'bus') {
-		color = '#DC3D34';
-	}
-	//color = '#DC3D34';
-	/*
-	const realZ = tweened(position.z, {
-		duration,
-		easing: cubicOut
-	});*/
+	$: duration = options?.duration ?? 14000;
+	$: color = options?.circleColor ?? '#FFFFFF';
+	$: lineColor = options?.lineColor ?? color;
+	$: linePoints = options?.lineLength ?? 30;
 
 	let lineRenderer = undefined;
 
 	let bool = false;
 
-	const linePoints = 30;
 	setInterval(() => {
 		bool = !bool;
 		if (oldValues.length >= linePoints) {
@@ -84,7 +90,7 @@
 				}
 			}
 
-			context.strokeStyle = color + '88';
+			context.strokeStyle = lineColor;
 			context.lineWidth = 1;
 			context.closePath();
 			//context.strokeWidth = 5;
