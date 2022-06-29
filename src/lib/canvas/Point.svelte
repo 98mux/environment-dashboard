@@ -38,7 +38,7 @@
 	$: render = ({ context }) => {
 		context.fillStyle = fill;
 		context.beginPath();
-		context.arc($realX, $realY, /*$radius*/ r, 0, 2 * Math.PI);
+		context.arc($realX, $realY, /*$radius*/ r * 4, 0, 2 * Math.PI);
 		context.fill(); //Largest cost
 
 		/*

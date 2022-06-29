@@ -105,12 +105,17 @@
 	setInterval(() => {
 		render = ({ context }) => {
 			context.beginPath();
+			context.shadowInset = true;
+			context.shadowBlur = 10;
+			context.shadowColor = 'gray';
+			context.shadowOffsetX = 2;
+			context.shadowOffsetY = 2;
 			context.fillStyle = color;
 			for (let i = 0; i < positions.length; i++) {
 				const x = get(tweeneded[i].x);
 				const y = get(tweeneded[i].y);
 				context.moveTo(x, y);
-				context.arc(x, y, positions[i].r, 0, 2 * Math.PI);
+				context.arc(x, y, positions[i].r * 5, 0, 2 * Math.PI);
 			}
 			context.fill();
 			context.closePath();

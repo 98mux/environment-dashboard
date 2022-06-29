@@ -1,5 +1,10 @@
 <script lang="ts">
-	import { MeshStandardMaterial, SphereBufferGeometry, PlaneGeometry } from 'three';
+	import {
+		MeshStandardMaterial,
+		SphereBufferGeometry,
+		PlaneGeometry,
+		OctahedronBufferGeometry
+	} from 'three';
 	import {
 		AmbientLight,
 		DirectionalLight,
@@ -7,10 +12,12 @@
 		OrthographicCamera,
 		useThrelte
 	} from 'threlte';
+	import Point2 from './Point2.svelte';
 	import Sphere from './Sphere.svelte';
 
 	//const geometry = new SphereBufferGeometry(0.5);
-	const geometry = new PlaneGeometry(1, 1).rotateX(180);
+	//const geometry = new PlaneGeometry(1, 1).rotateX(180);
+	const geometry = new OctahedronBufferGeometry(1, 3);
 
 	const material = new MeshStandardMaterial();
 	export let rows = 50;
@@ -37,15 +44,15 @@
 	$: zoom = $size.width / 100;
 </script>
 
-<OrthographicCamera position={{ x: 0, y: 500, z: 0 }} {zoom} lookAt={{}} />
+<OrthographicCamera position={{ x: 0, y: 500, z: -50 }} {zoom} lookAt={{}} />
 
-<InstancedMesh {geometry} {material} interactive position={{ x: -rows / 2, z: -rows / 2 }}>
+<InstancedMesh {geometry} {material} interactive position={{ x: 0, z: 0 }}>
 	{#each positions as position}
 		<Sphere {position} />
 	{/each}
 </InstancedMesh>
+<Point2 />
 
-<!--
 <DirectionalLight position={{ y: 10, z: 5 }} />
 
-<AmbientLight intensity={1} />-->
+<AmbientLight intensity={1.5} />

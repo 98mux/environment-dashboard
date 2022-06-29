@@ -11,8 +11,8 @@
 
 <script lang="ts">
 	import { Layer } from 'svelte-canvas';
-	import { spring, tweened } from 'svelte/motion';
-	import { cubicOut, linear } from 'svelte/easing';
+	import { tweened } from 'svelte/motion';
+	import { linear } from 'svelte/easing';
 	import { Writable, get } from 'svelte/store';
 
 	export let routes: { [id: string]: { x: number; y: number } } = {};
@@ -65,7 +65,7 @@
 
 	let bool = false;
 
-	setInterval(() => {
+	function renderLines() {
 		bool = !bool;
 		if (oldValues.length >= linePoints) {
 			oldValues.shift();
@@ -97,10 +97,13 @@
 		};
 
 		oldValues.push(tweeneded.map((t) => ({ x: get(t.x), y: get(t.y) })));
-	}, 60);
+	}
+
+	setInterval(renderLines, 60);
 
 	let render = undefined;
-	setInterval(() => {
+
+	function renderParticles() {
 		render = ({ context }) => {
 			context.beginPath();
 			context.fillStyle = color;
@@ -113,7 +116,8 @@
 			context.fill();
 			context.closePath();
 		};
-	}, 1000 / fps);
+	}
+	setInterval(renderParticles, 1000 / fps);
 </script>
 
 {#if lineRenderer}

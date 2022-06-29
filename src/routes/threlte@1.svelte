@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { Canvas } from 'threlte';
 	import Scene from '$lib/threlte/Scene.svelte';
-	let mixingRatio = 1.0;
+	let mixingRatio = 10;
 </script>
 
-<input type="number" class="input" bind:value={mixingRatio} min={1000} max={50000} step={100} />
-<Canvas frameloop="always">
+<input type="number" class="input" bind:value={mixingRatio} min={100} max={50000} step={100} />
+<Canvas>
 	<Scene rows={Math.round(Math.sqrt(mixingRatio))} />
 </Canvas>
