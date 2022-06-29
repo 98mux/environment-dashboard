@@ -1,5 +1,5 @@
 <script>
-	import AudioMixer from './../lib/widgets/AudioMixer.svelte';
+	import AudioMixer from '../lib/widgets/AudioMixer.svelte';
 	import AirQuality from '$lib/widgets/AirQuality.svelte';
 	import LineChart from '$lib/widgets/charts/LineChart.svelte';
 	import TrafficAirQualityChart from '$lib/widgets/charts/TrafficAirQualityChart.svelte';

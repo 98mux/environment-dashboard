@@ -4,13 +4,14 @@
 	import { Canvas } from 'svelte-canvas';
 
 	import Points, { OptionsType } from './Points.svelte';
+	import PointsWithRoute from './PointsWithRoute.svelte';
 
 	let points = [];
 	let width, height;
 
 	export let rows = 50;
 
-	let positions: { x: number; y: number; r: number }[] = [];
+	let positions: { x: number; y: number; route: Array<{ id: string }> }[] = [];
 	const size = 1000;
 
 	function create() {
@@ -30,7 +31,7 @@
 			positions2.push({
 				x: randomPos(),
 				y: randomPos(),
-				r
+				route: [{ id: 0 }, { id: 1 }, { id: 2 }]
 			});
 		}
 		positions = positions2;
@@ -66,6 +67,7 @@
 	let options2: Array<OP> = [config1.values, config2.values];
 	let options: Array<Array<OptionsType>> = [config1.graphic, config2.graphic];
 
+	let routes = { 0: { x: 50, y: 50 }, 1: { x: 100, y: 100 }, 2: { x: 50, y: 100 } };
 	let selected = 0;
 </script>
 
@@ -82,20 +84,23 @@
 	</select>
 
 	<Canvas {width} {height} style="cursor: pointer" autoclear={true} bind:canvas>
-		<Points
-			positions={positions.slice(0, 1 * third)}
+		<PointsWithRoute
+			points={positions.slice(0, 1 * third)}
 			type="bicycle"
 			options={options[selected][0]}
+			{routes}
 		/>
-		<Points
-			positions={positions.slice(third + 1, 2 * third)}
+		<PointsWithRoute
+			points={positions.slice(third + 1, 2 * third)}
 			type="car"
 			options={options[selected][1]}
+			{routes}
 		/>
-		<Points
-			positions={positions.slice(2 * third + 1, 3 * third)}
+		<PointsWithRoute
+			points={positions.slice(2 * third + 1, 3 * third)}
 			type="bus"
 			options={options[selected][2]}
+			{routes}
 		/>
 		<!--{#each positions as { x, z }}
 			<Point {x} y={z} fill="tomato" />
