@@ -13,6 +13,7 @@
 		useThrelte
 	} from 'threlte';
 	import Point from './Point.svelte';
+	import PointedRoute from './PointedRoute.svelte';
 
 	//const geometry = new SphereBufferGeometry(0.5);
 	//const geometry = new PlaneGeometry(1, 1).rotateX(180);
@@ -24,11 +25,23 @@
 	const { size } = useThrelte();
 	let zoom = $size.width / 100;
 	$: zoom = $size.width / 100;
+
+	let route = [
+		[1.0, 1.0],
+		[10.0, 10.0],
+		[1.0, 10.0],
+		[10.0, 5.0],
+		[15, 15],
+		[17, 15],
+		[10, 10],
+		[10, 10]
+	].map(([x, y]) => ({ x, y }));
 </script>
 
 <OrthographicCamera position={{ x: 0, y: 500, z: -50 }} {zoom} lookAt={{}} />
 
 <InstancedMesh {geometry} {material} interactive position={{ x: 0, z: 0 }} />
+<!--
 <Point
 	positions={[
 		{ x: 5, y: 2 },
@@ -43,7 +56,8 @@
 />
 <Point color={'white'} />
 <Point color={'green'} />
-<Point color={'blue'} />
+<Point color={'blue'} />-->
+<PointedRoute {route} />
 
 <!--
 <DirectionalLight position={{ y: 10, z: 5 }} />

@@ -1,22 +1,13 @@
 <script lang="ts">
-	import { cubicOut } from 'svelte/easing';
-
-	import { tweened } from 'svelte/motion';
-
-	import { get, Writable } from 'svelte/store';
-
 	import {
 		PointsMaterial,
-		VertexColors,
 		BufferGeometry,
 		Float32BufferAttribute,
 		Points,
-		OctahedronBufferGeometry,
 		TextureLoader
 	} from 'three';
-	import { Object3DInstance, useFrame } from 'threlte';
+	import { Object3DInstance } from 'threlte';
 	export let positions: Array<{ x: number; y: number }> = [];
-	export let particles = 10 * 1000;
 	export let color = 'white';
 	export let size = 8;
 	let geometry = new BufferGeometry();
@@ -35,15 +26,13 @@
 		'https://cdn0.iconfinder.com/data/icons/3D-shapes-psd/256/ball-6x6.png'
 	);
 
-	useFrame(({ clock }) => {
-		const t = clock.getElapsedTime() % 1;
-		//console.log(t % 1);
+	$: {
 		if (positions) {
-			const positions2 = positions.flatMap((p) => [p.x + t * 10, 0, p.y + t * 10]);
+			const positions2 = positions.flatMap((p) => [p.x, 0, p.y]);
 			geometry.setAttribute('position', new Float32BufferAttribute(positions2, 3));
 			//geometry.computeBoundingSphere();
 		}
-	});
+	}
 	let material = new PointsMaterial({
 		size, // 8 is favorite
 		map: sprite,
