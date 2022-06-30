@@ -1,9 +1,16 @@
 <script>
+	import { useFrame } from 'threlte';
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
+	/*
+	import Stats from 'stats.js';
 
+	var stats = new Stats();
+	stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+	document.body.appendChild(stats.dom);
 	// NOTE: the element that is using one of the theme attributes must be in the DOM on mount
+	stats.begin();*/
 	onMount(() => {
 		themeChange(false);
 		// 👆 false parameter is required for svelte

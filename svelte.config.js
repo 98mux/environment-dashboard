@@ -10,6 +10,11 @@ const config = {
 		prerender: {
 		  default: false
 		},
+		vite: {
+			ssr: {
+			  noExternal: ['three']
+			}
+		      }
 	},
 
 	preprocess: [

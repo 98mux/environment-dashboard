@@ -12,7 +12,7 @@
 		OrthographicCamera,
 		useThrelte
 	} from 'threlte';
-	import Point2 from './Point2.svelte';
+	import Point from './Point.svelte';
 
 	//const geometry = new SphereBufferGeometry(0.5);
 	//const geometry = new PlaneGeometry(1, 1).rotateX(180);
@@ -20,23 +20,6 @@
 
 	const material = new MeshStandardMaterial();
 	export let rows = 50;
-
-	let positions: { x: number; z: number }[] = [];
-
-	function create() {
-		let positions2 = [];
-		for (let i = 0; i < rows * rows; i++) {
-			positions2.push({ x: randomPos(), z: randomPos() });
-		}
-		positions = positions2;
-	}
-	create();
-	function randomPos() {
-		return Math.random() * 50;
-	}
-	setInterval(() => {
-		create();
-	}, 1000);
 
 	const { size } = useThrelte();
 	let zoom = $size.width / 100;
@@ -46,7 +29,21 @@
 <OrthographicCamera position={{ x: 0, y: 500, z: -50 }} {zoom} lookAt={{}} />
 
 <InstancedMesh {geometry} {material} interactive position={{ x: 0, z: 0 }} />
-<Point2 />
+<Point
+	positions={[
+		{ x: 5, y: 2 },
+		{ x: 0, y: 0 },
+		{ x: 2, y: 3 },
+		{ x: 20, y: 20 },
+		{ x: -20, y: 20 },
+		{ x: 20, y: -20 },
+		{ x: -20, y: -20 }
+	]}
+	color={'black'}
+/>
+<Point color={'white'} />
+<Point color={'green'} />
+<Point color={'blue'} />
 
 <!--
 <DirectionalLight position={{ y: 10, z: 5 }} />

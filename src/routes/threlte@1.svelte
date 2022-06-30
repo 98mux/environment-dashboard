@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Canvas } from 'threlte';
+	import { Canvas, useFrame } from 'threlte';
 	import Scene from '$lib/threlte/Scene.svelte';
 	let mixingRatio = 10;
 </script>
