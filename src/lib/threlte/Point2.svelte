@@ -16,7 +16,14 @@
 		TextureLoader
 	} from 'three';
 	import { Object3DInstance, useFrame } from 'threlte';
-
+	export let options:
+		| Partial<{
+				circleColor: string;
+				lineColor: string;
+				lineLength: number;
+				duration: number;
+		  }>
+		| undefined;
 	let particles = 1 * 1000;
 	let positions = [];
 	let colors = [];
@@ -26,7 +33,6 @@
 	let n = 70,
 		n2 = n / 2; // particles spread in the cube
 
-	let options = undefined;
 	$: duration = options?.duration ?? 8000;
 	let tweeneded: Array<{ x: Writable<number>; y: Writable<number> }> = [];
 
