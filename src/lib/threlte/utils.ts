@@ -37,8 +37,6 @@ export function getCurvedRouteFromRoute(routes: Array<Point>){
 		curved2.push([x, y]);
 	}
 
-	console.log(curved2);
 	curved2 = curved2.map((([x,y]) => ({x,y})))
-	console.log(curved2);
 	return curved2;
 }

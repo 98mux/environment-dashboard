@@ -1,25 +1,17 @@
 <script lang="ts">
 	import { useFrame } from 'threlte';
 	import Point from './Point.svelte';
-
-	import { cubicOut } from 'svelte/easing';
-
-	import { tweened } from 'svelte/motion';
-
-	import { get, Writable } from 'svelte/store';
 	import { getCurvedRouteFromRoute } from './utils';
 
-	export let route: Array<{ x: number; y: number }> = [];
+	export let route: Array<[number, number]> = [];
 	export let count: number = 500;
 	export let width = 2;
-	export let options: Partial<{
-		color: string;
-		size: number;
-		duration: string;
-	}> = {};
+	export let color = 'white';
+	export let size = 8;
 	export let animationTime = 10;
+	export let noTexture: boolean = false;
 
-	$: curved = getCurvedRouteFromRoute(route);
+	$: curved = getCurvedRouteFromRoute(route.map((r) => ({ x: r[0], y: r[1] })));
 
 	let positions: Array<{ x: number; y: number }> = [];
 
@@ -66,12 +58,9 @@
 		let t = clock.getElapsedTime() % animationTime;
 		t /= animationTime;
 		//t = 0;
-		//console.log(t);
 		positions = particles.map((p) => getPosition(t, p.offset));
 		positions = positions.filter((p) => p !== undefined).map((p) => ({ x: p.x, y: p.y }));
-
-		//console.log(t % 1);
 	});
 </script>
 
-<Point {positions} {...options} />
+<Point {positions} {color} {size} {noTexture} />
