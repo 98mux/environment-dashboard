@@ -33,8 +33,20 @@
 		[10.0, 5.0],
 		[15, 15],
 		[17, 15],
-		[10, 10],
-		[10, 10]
+		[10, 15]
+	].map(([x, y]) => ({ x, y }));
+	let route2 = [
+		[0.0, -13.0],
+		[0.0, -3.0],
+		[10.0, -3.0],
+		[10.0, -13.0],
+		[0.0, -13.0],
+		[0, -23]
+	].map(([x, y]) => ({ x, y }));
+
+	let route3 = [
+		[20.0, 50.0],
+		[-20.0, -20.0]
 	].map(([x, y]) => ({ x, y }));
 </script>
 
@@ -58,6 +70,8 @@
 <Point color={'green'} />
 <Point color={'blue'} />-->
 <PointedRoute {route} />
+<PointedRoute route={route2} />
+<PointedRoute route={route3} />
 
 <!--
 <DirectionalLight position={{ y: 10, z: 5 }} />
