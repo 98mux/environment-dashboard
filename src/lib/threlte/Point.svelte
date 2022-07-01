@@ -36,12 +36,15 @@
 	let material = new PointsMaterial({
 		size, // 8 is favorite
 		map: sprite,
-		alphaTest: 0.5,
-		transparent: true,
+		alphaTest: noTexture ? 0.9 : 0.5,
+		transparent: false, //May actually effect some things
 		sizeAttenuation: false,
 		fog: false,
-		color: color
+		color: color,
+		toneMapped: false
 	});
+	//material.color.setHex(color);
+	material.color.convertSRGBToLinear();
 	let points = new Points(geometry, material);
 </script>
 

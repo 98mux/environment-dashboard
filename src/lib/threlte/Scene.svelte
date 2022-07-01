@@ -1,16 +1,22 @@
 <script lang="ts">
-	import { OrthographicCamera, useThrelte } from 'threlte';
+	import { ColorManagement, sRGBEncoding } from 'three';
+	import { AmbientLight, OrthographicCamera, useThrelte } from 'threlte';
 	import PointedRoute from './PointedRoute.svelte';
 
 	const { size, renderer } = useThrelte();
-	renderer.gammaOutput = true;
-	renderer.gammaFactor = 2.2;
+	renderer.antialias = false;
+	/*	renderer.gammaOutput = true;
+	renderer.gammaFactor = 2.2;*/
+	/*
+	renderer.inputEncoding = sRGBEncoding;
+	renderer.outputEncoding = sRGBEncoding;*/
 
 	let zoom = $size.width / 100;
 	$: zoom = $size.width / 100;
 </script>
 
 <OrthographicCamera position={{ x: 0, y: 500, z: -50 }} {zoom} lookAt={{}} />
+<AmbientLight color={0xffffff} intensity={100000000} />
 
 <PointedRoute
 	route={[
@@ -22,6 +28,12 @@
 		[17, 15],
 		[10, 15]
 	]}
+	count={1000}
+	animationTime={20}
+	size={5}
+	width={1}
+	noTexture={true}
+	color="white"
 />
 <PointedRoute
 	route={[
@@ -32,6 +44,12 @@
 		[10.0, -13.0],
 		[10, -23]
 	]}
+	count={1000}
+	animationTime={5}
+	size={5}
+	width={1}
+	noTexture={true}
+	color="lightgreen"
 />
 <PointedRoute
 	route={[
@@ -54,9 +72,9 @@
 		[31, -20.0],
 		[31, 50.0]
 	]}
-	size={4}
+	size={5}
 	width={0.8}
-	count={50}
+	count={500}
 	color="blue"
 	noTexture={true}
 />
@@ -68,6 +86,7 @@
 	]}
 	width={0.8}
 	count={200}
+	color="pink"
 />
 <PointedRoute
 	route={[
