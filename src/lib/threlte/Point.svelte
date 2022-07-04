@@ -36,7 +36,7 @@
 	let material = new PointsMaterial({
 		size, // 8 is favorite
 		map: sprite,
-		alphaTest: noTexture ? 0.9 : 0.5,
+		alphaTest: noTexture ? 0.5 : 0.5,
 		transparent: false, //May actually effect some things
 		sizeAttenuation: false,
 		fog: false,

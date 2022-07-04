@@ -46,12 +46,33 @@
 			return undefined;
 		}
 
+		/*Extra is the part that makes the ends look more cool!*/
+		let strength = 5;
+		let extraX = 0;
+		let extraY = 0;
+		if(rounded === 0){
+			extraX = minusOneRest * strength;
+			extraY = minusOneRest * strength;
+		}
+
+		if(rounded === curved.length - 2){
+			extraX = rest * strength;
+			extraY = rest * strength;
+		}
+		extraX += 1;
+		extraY += 1;
+
+		/*
+		extraX = Math.max(extraX, 1);
+		extraY = Math.max(extraY, 1);*/
+
+
 		const r1 = curved[rounded];
 		const r2 = curved[rounded + 1];
 
 		const x = r2.x * rest + r1.x * minusOneRest;
 		const y = r2.y * rest + r1.y * minusOneRest;
-		return { x: x + offset.x, y: y + offset.y };
+		return { x: x + offset.x * extraX, y: y + offset.y * extraY };
 	}
 
 	useFrame(({ clock }) => {

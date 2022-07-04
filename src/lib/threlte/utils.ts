@@ -5,15 +5,6 @@ export type Point = {x:number, y :number};
 export function getCurvedRouteFromRoute(routes: Array<Point>){
 
 	let line = turf.lineString(routes.map((r) => ([r.x,r.y])));
-	/*
-	let line = turf.lineString([
-		[760.91308, 184.27501],
-		[766.95556, 187.29501],
-		[765.52734, 194.0443],
-		[746.1914, 191.34789],
-		[736.52343, 200.7657],
-		[731.57958, 202.10656]
-	]);*/
 	let curved = turf.bezierSpline(line, { resolution: 10000, sharpness: 0.85 });
 
 	const cord = curved.geometry.coordinates;
